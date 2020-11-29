@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="menu_clear">Clear</string>
+    <string name="menu_search">Search</string>
+    <string name="query_hint">Happiest Season</string>
+    <string name="cast_as_character">as %1$s</string>
+    <string name="tab_trailers">Trailers</string>
+    <string name="vote_count">%1$d Votes</string>
+    <string name="hello_blank_fragment">Hello fragment</string>
+    <string name="tab_reviews">Reviews</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
 </resources>

@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -18,10 +20,19 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', "API_KEY", ApiKey
+            resValue 'string', "API_KEY", ApiKey
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "API_KEY", ApiKey
+            resValue 'string', "API_KEY", ApiKey
         }
+    }
+    dataBinding {
+        enabled = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,4 +53,60 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Retrofit2
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
+    //koin
+    implementation "org.koin:koin-core:2.0.1"
+    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+
+    //Lifecycle Components (ViewModel, LiveData and ReactiveStreams)
+    def lifecycle_version = "2.2.0-alpha03"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    //ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // Card View
+    def cardview_version = "1.0.0"
+    implementation "androidx.cardview:cardview:$cardview_version"
+
+    // Circle ImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //Preferences
+    implementation "androidx.preference:preference-ktx:1.0.0"
+
+    // -- Room
+    def room_version = "2.1.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // OkHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
+
+    //Material Design Components
+    def material_version = '1.2.0-alpha02'
+    implementation "com.google.android.material:material:$material_version"
+
+    // Recyclerview
+    def recyclerview_version = "1.1.0-beta03"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+
+    //glide
+    def glide_version = "4.9.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    // Glide RecyclerView Preloader
+    implementation ("com.github.bumptech.glide:recyclerview-integration:$glide_version") {
+        // Excludes the support library because it's already included by Glide.
+        transitive = false
+    }
 }
