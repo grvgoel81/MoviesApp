@@ -14,7 +14,6 @@ Kotlin
 *   Databinding,BindingAdapters
 *   Pagination and endless scrolling using custom pagination.
 *   Handle network status and network failures
-*   ConstraintLayout(guidelines, barriers... etc)
 *   ViewPager2
 *   Material design.
 *   Offline support with the help of room database. 
